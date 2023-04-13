@@ -1,10 +1,10 @@
-const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:5000'
+const baseURL = 'http://localhost:8080/api/v1'
 
 const urls = {
     auth: '/auth',
-    admin: '/admin',
+    users: '/users',
     books: '/books',
-    user: '/user'
+    register: '/register'
 }
 
 export { baseURL, urls }
