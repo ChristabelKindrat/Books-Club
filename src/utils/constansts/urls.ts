@@ -1,4 +1,4 @@
-const baseURL = process.env["REACT_APP_API "];
+const baseURL = 'http://localhost:8080/api/v1';
 
 const urls = {
     auth: '/auth',

@@ -19,9 +19,11 @@ interface AddressInterface{
     street: string,
     zip_code: string
 }
+interface PhotoInterface{
+    photo_url?: string | null
+}
 
-interface UserInterface extends UserInfoInterface,UserLoginInterface{
-    photo_url?: string | null,
+interface UserInterface extends UserInfoInterface,UserLoginInterface, PhotoInterface{
     address: AddressInterface
 }
 
@@ -41,7 +43,8 @@ export type {
     UserInfoInterface,
     AddressInterface,
     UserToken,
-    TokenData
+    TokenData,
+    PhotoInterface
 }
 
 
