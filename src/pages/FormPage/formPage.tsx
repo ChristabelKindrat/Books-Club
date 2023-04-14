@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 
 import './formPage.style.scss';
-import {BookInterface} from "../../interfaces/book.interface";
+import {BookInterface} from "../../interfaces";
 import {useAppDispatch} from "../../hooks";
 import {bookAction} from "../../redux";
 

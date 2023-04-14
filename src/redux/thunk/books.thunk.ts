@@ -1,13 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {BookInterface} from "../../interfaces/book.interface";
+import {BookInterface} from "../../interfaces";
 import {AxiosError} from "axios";
 import {bookService} from "../../services/book.service";
 
-export const getAll = createAsyncThunk<BookInterface[], void>(
+export const getAll = createAsyncThunk<BookInterface[], number>(
     'BookSlice/getAll',
-    async (_,{rejectWithValue}) =>{
+    async (pageNumber,{rejectWithValue}) =>{
         try {
-            const {data}=await bookService.getAll();
+            const {data}=await bookService.getAll(pageNumber);
             return data;
         }catch (e){
             const error = e as AxiosError

@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 
 import './book.style.scss';
-import {BookInterface} from "../../interfaces/book.interface";
+import {BookInterface} from "../../interfaces";
 import {useNavigate} from "react-router-dom";
 
 interface IProps{

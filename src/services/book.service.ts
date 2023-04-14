@@ -1,11 +1,12 @@
 import {AxiosRes, axiosService} from "./axios.service";
-import {BookInterface} from "../interfaces/book.interface";
+import {BookInterface} from "../interfaces";
 import {urls} from "../utils/constansts/urls";
-import {authService} from "./auth.service";
+
 
 export const bookService = {
-    getAll:():AxiosRes<BookInterface[]> =>axiosService.get(urls.books, {headers:{Authorization:`Bearer ${authService.getAccessToken()}`}}),
+    getAll:(pageNumber = 1):AxiosRes<BookInterface[]> =>axiosService.get(urls.books),
     getById:(id: number):AxiosRes<BookInterface> =>axiosService.get(`${urls.books}/${id}`),
     postBook:(book: BookInterface):AxiosRes<BookInterface> => axiosService.post(urls.books, book),
+    patchBook:(image: string):AxiosRes<BookInterface> => axiosService.patch(urls.books, image),
     deleteById:(id: number):AxiosRes<BookInterface> => axiosService.delete(`${urls.books}/${id}`)
 }

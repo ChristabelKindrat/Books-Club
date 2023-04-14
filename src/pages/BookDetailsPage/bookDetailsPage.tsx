@@ -1,13 +1,16 @@
 import React, {FC, useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+
 import {useAppLocation} from "../../hooks";
-import {BookInterface} from "../../interfaces/book.interface";
+import {BookInterface} from "../../interfaces";
 import {bookService} from "../../services/book.service";
+import {Button} from "../../components";
 
 const BookDetailsPage:FC = () =>{
     const {id} = useParams<{id: string}>();
     const {state} =  useAppLocation<BookInterface>();
     const [book, setBook] = useState<BookInterface|null>(null);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         if (state){
@@ -19,11 +22,13 @@ const BookDetailsPage:FC = () =>{
 
     return (
         <>
+            Book
             {book && (
                 <div>
                     //todo details on page
                 </div>
             )}
+            <Button type={'button'} onClick={()=>{navigate('take_book_form')}}>Take this Book</Button>
         </>
     );
 }

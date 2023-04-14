@@ -1,16 +1,18 @@
 import {AxiosRes, axiosService} from "./axios.service";
 import {urls} from "../utils/constansts/urls";
-import {UserInterface, UserLoginInterface} from "../interfaces";
+import {TokenData, UserInterface, UserLoginInterface, UserToken} from "../interfaces";
 
 const _accessTokenKey= 'access';
 const _refreshTokenKey= 'refresh';
 
 const authService = {
 
-    login: (user: UserLoginInterface):AxiosRes<UserLoginInterface> => axiosService.post("http://localhost:8080/api/v1/auth/authenticate", user),
-    register: (user: UserInterface):AxiosRes<UserInterface> => axiosService.post("http://localhost:8080/api/v1/auth/authenticate", user),
+    login: (user: UserLoginInterface):AxiosRes<UserToken> => axiosService.post(`${urls.auth }/authenticate`, user),
+    register: (user: UserInterface):AxiosRes<UserInterface> => axiosService.post(`${urls.auth}/register`, user),
 
-    setTokens: ({access , refresh}: any) => {
+    refresh:(refresh: string) =>axiosService.post(`${urls.auth}/refresh`, refresh),
+
+    setTokens: ({access , refresh= ""}: TokenData) => {
         localStorage.setItem(_accessTokenKey, access)
         localStorage.setItem(_refreshTokenKey, refresh)
     },

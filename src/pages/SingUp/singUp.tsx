@@ -7,16 +7,15 @@ import {Button, Input} from "../../components";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {registerValidator} from "./singUp.validator";
 import {UserInterface} from "../../interfaces";
-import {useAppDispatch} from "../../hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks";
 import {authAction} from "../../redux";
+import {useNavigate} from "react-router-dom";
 
 const SingUp: FC = () => {
     const dispatch = useAppDispatch();
-
-//todo what is response?
-    const submit: SubmitHandler<UserInterface> = async (data) => {
-        await dispatch(authAction.register({user: data}));
-    }
+    const navigate = useNavigate();
+    const {errors} = useAppSelector(state => state.auth)
+    //todo with backend errors bellow
 
 //todo why not working with validation
     const {
@@ -27,6 +26,13 @@ const SingUp: FC = () => {
         // resolver: joiResolver(registerValidator),
         mode: 'onSubmit',
     });
+
+    const submit: SubmitHandler<UserInterface> = async (data) => {
+      const {meta} = await dispatch(authAction.register({user: data}));
+      if (meta.requestStatus === "fulfilled"){
+          navigate('/login');
+      }
+    }
 
     return (
         <form onSubmit={handleSubmit(submit)}>
@@ -42,12 +48,6 @@ const SingUp: FC = () => {
                 {...register('last_name')}
                 // errorText={errors.firstName?.message}
             />
-            {/*<Input*/}
-            {/*    type={'file'}*/}
-            {/*    value={'Photo'}*/}
-            {/*    {...register('photo')}*/}
-            {/*    // errorText={errors.firstName?.message}*/}
-            {/*/>*/}
             <Input
                 type={'text'}
                 value={'City'}

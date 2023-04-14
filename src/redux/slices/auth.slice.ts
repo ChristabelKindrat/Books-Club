@@ -1,13 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 import {UserInterface} from "../../interfaces";
-import {login, register} from "../thunk/auth.thunk";
+import { login, register} from "../thunk/auth.thunk";
 import {authService} from "../../services/auth.service";
 
-//todo type for error
 interface AuthState {
     user: UserInterface | null;
-    errors: any,
+    errors: unknown,
     isAuth: boolean,
 }
 const initialUserState: AuthState = {
@@ -26,9 +25,14 @@ const authSlice = createSlice({
     },
     extraReducers: builder =>
         builder
+            // .addCase(getAccessToken.fulfilled,(state, action)=>{
+            //     state.authToken = action.payload
+            //     console.log(state.authToken);
+            // })
             .addCase(login.fulfilled, (state, action)=>{
+                authService.setTokens({access: action.payload.accessToken});
                 state.isAuth = true
-                authService.setTokens(action.payload);
+                console.log(state.isAuth);
             })
             .addCase(register.fulfilled, (state, action)=>{
                 const [type] = action.type.split('/').slice(-1);
@@ -45,6 +49,7 @@ const {reducer: authReducer} = authSlice;
 const authAction= {
     register,
     login,
+    // getAccessToken
 };
 
 export {

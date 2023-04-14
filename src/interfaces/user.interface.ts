@@ -25,14 +25,23 @@ interface UserInterface extends UserInfoInterface,UserLoginInterface{
     address: AddressInterface
 }
 
-type UserWithToken = UserInterface & { access_token: string };
+interface UserToken{
+    accessToken: string,
+    tokenType: string
+}
+
+interface TokenData {
+    access: string;
+    refresh?: string;
+}
 
 export type {
     UserLoginInterface,
     UserInterface,
     UserInfoInterface,
     AddressInterface,
-    UserWithToken
+    UserToken,
+    TokenData
 }
 
 
