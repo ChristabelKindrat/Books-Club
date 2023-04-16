@@ -20,9 +20,9 @@ const SingUp: FC = () => {
         register,
         handleSubmit,
         reset,
-        // formState: {errors},
+        formState: {errors},
     } = useForm<UserInterface>({
-        // resolver: joiResolver(registerValidator),
+        resolver: joiResolver(registerValidator),
         mode: 'onSubmit',
     });
 
@@ -42,19 +42,19 @@ const SingUp: FC = () => {
                 type={'text'}
                 value={'First Name'}
                 {...register('first_name')}
-                // errorText={errors.first_name?.message}
+                errorText={errors.first_name?.message}
             />
             <Input
                 type={'text'}
                 value={'Last Name'}
                 {...register('last_name')}
-                // errorText={errors.last_name?.message}
+                errorText={errors.last_name?.message}
             />
             <Input
                 type={'text'}
                 value={'City'}
                 {...register('address.city')}
-                // errorText={errors.address?.city?.message!}
+                errorText={errors.address?.city?.message!}
             />
             <Input
                 type={'text'}
@@ -66,38 +66,38 @@ const SingUp: FC = () => {
                 type={'text'}
                 value={'Zip Code'}
                 {...register('address.zip_code')}
-                // errorText={errors.address?.zip_code?.message}
+                errorText={errors.address?.zip_code?.message}
             />
             <Input
                 type={'text'}
                 value={'Street'}
                 {...register('address.street')}
-                // errorText={errors.address?.street?.message}
+                errorText={errors.address?.street?.message}
             />
             <Input
                 type={'text'}
                 value={'Build number'}
                 {...register('address.build_number')}
-                // errorText={errors.address?.build_number?.message}
+                errorText={errors.address?.build_number?.message}
             />
             <Input
                 type={'text'}
                 value={'Phone number'}
                 {...register('phone_number')}
-                // errorText={errors.phone_number?.message}
+                errorText={errors.phone_number?.message}
             />
 
             <Input
                 type={'email'}
                 value={'Email'}
                 {...register('email')}
-                // errorText={errors.email?.message}
+                errorText={errors.email?.message}
             />
             <Input
                 type={'password'}
                 value={'Password'}
                 {...register('password')}
-                // errorText={errors.password?.message}
+                errorText={errors.password?.message}
             />
             {errorFromBack && <span>{errorFromBack}</span>}
             <Button type={"submit"}>Save</Button>

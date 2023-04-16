@@ -1,28 +1,28 @@
 import Joi from 'joi';
 import {
-    validateBuild,
     validateCity,
-    validateEmail,
     validateFirstName,
     validateLastName,
-    validatePassword,
     validatePhoneNumber,
+    validateEmail,
+    validatePassword,
     validateRegion,
     validateStreet,
-    validateZipCode
+    validateZipCode,
+    validateBuild
 } from '../../validators';
 
-const registerValidator = Joi.object({
+export const registerValidator = Joi.object({
     first_name: validateFirstName,
     last_name: validateLastName,
-    city: validateCity,
-    region: validateRegion,
-    build_number: validateBuild,
-    zip_code:validateZipCode,
     phone_number: validatePhoneNumber,
     email: validateEmail,
     password: validatePassword,
-    street:validateStreet
+    address: Joi.object({
+        city: validateCity,
+        region: validateRegion,
+        build_number: validateBuild,
+        zip_code: validateZipCode,
+        street: validateStreet,
+    }),
 });
-
-export { registerValidator };

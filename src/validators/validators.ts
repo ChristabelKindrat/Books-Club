@@ -28,12 +28,12 @@ const validateFirstName = Joi.string()
         'string.pattern.base': 'First name must consist of letters only',
     });
 
-const validateCity = Joi.string()
+ const validateCity = Joi.string()
     .required()
     .pattern(/^[A-Za-z]+$/)
     .messages({
         'string.empty': 'City cannot be empty',
-        'string.pattern.base': 'City must consist of letters only'
+        'string.pattern.base': 'City must consist of letters only',
     });
 
 const validateRegion = Joi.string()
