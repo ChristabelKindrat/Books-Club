@@ -9,8 +9,9 @@ import {logInValidator} from "./logIn.validator";
 import {UserLoginInterface} from "../../interfaces";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import { useNavigate} from "react-router-dom";
-import {authAction} from "../../redux";
+import {authAction, userAction} from "../../redux";
 import {userService} from "../../services/user.service";
+
 
 const initialValues = {
     email: '',
@@ -18,15 +19,17 @@ const initialValues = {
 };
 
 const LogIn:FC = () => {
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const {isAuth} = useAppSelector(state => state.auth)
-//todo user for deps
+    const {activeUser} = useAppSelector(state => state.user)
+    const {errorFromBack} = useAppSelector(state => state.auth)
+
     useEffect(() => {
         if (userService.isUserLogin()) {
             navigate('/books');
         }
-    }, [isAuth, navigate]);
+    }, [activeUser, navigate]);
 
     const {
         register,
@@ -39,7 +42,12 @@ const LogIn:FC = () => {
     });
 
     const submit: SubmitHandler<UserLoginInterface> = async (data) => {
-       await dispatch(authAction.login({user: data}))
+        try {
+            await dispatch(authAction.login({user: data}));
+            await dispatch(userAction.getActiveUser());
+        }catch (e) {
+            console.log(e);
+        }
     };
 
     return (
@@ -60,6 +68,7 @@ const LogIn:FC = () => {
                 Don't have account yet?
                 <Button type={'button'} onClick={()=>{navigate('/register')}}>Register</Button>
             </div>
+            {errorFromBack && <span>{errorFromBack}</span>}
             <Button type={'submit'} fullWidth={false}>
                 Login
             </Button>

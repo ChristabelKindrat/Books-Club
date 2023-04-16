@@ -10,7 +10,7 @@ function SideBar() {
     return (
         <div>
             This is side bar with settings
-            <Button type={'button'} onClick={()=>{navigate('/settings')}}>Settings</Button>
+            <Button type={'button'} onClick={()=>{navigate('settings')}}>Settings</Button>
         </div>
     );
 }

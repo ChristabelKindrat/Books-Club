@@ -2,26 +2,33 @@ import React, {FC} from 'react';
 
 import './input.style.scss';
 
-interface InputProps {
+export interface InputProps {
     type: string;
-    //todo change type any
-    errorText?: any;
+    errorText?: string;
     className?: string;
+    errorFromBack?: string;
     fullWidth?: boolean;
     value?: string;
+    defaultV?: string | number;
+    defaultText?: string | number,
+    onChange?: React.ChangeEventHandler
 }
 
 const Input: FC<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(
-    ({type, value, fullWidth, errorText, className, ...rest}, ref) => {
+    ({type, onChange, errorFromBack, defaultV, value, defaultText, fullWidth, errorText, className, ...rest}, ref) => {
         return (
             <>
                 <input type={type}
                     // fullWidth={fullWidth}
+                       defaultValue={defaultV}
                        placeholder={value}
+                       value={defaultText}
                        ref={ref}
+                       onChange={onChange}
                        {...rest}
                 />
-                {errorText && <span className="">{errorText}</span>}
+                {errorText && <span className="">{errorText}</span> || errorFromBack &&
+                    <span className="">{errorText}</span>}
             </>
         );
     })

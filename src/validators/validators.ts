@@ -9,75 +9,71 @@ const validatePassword = Joi.string()
         'string.empty': 'The password cannot be empty.',
         'string.min': 'The password must be longer than 8 characters.',
         'string.max': 'The should not contain more than 255 characters.',
-        'string.pattern.base': 'The password must be contain at least one capital letter.'
-    });
-
-const validateFirstName = Joi.string()
-    .trim()
-    .pattern(/^[A-Za-z]+$/)
-    .required()
-    .messages({
-        'string.empty': 'First name cannot be empty',
-        'string.pattern.base': 'First name must consist of letters only',
-        'any.required': 'First name is required'
+        'string.pattern.base': 'The password must be contain at least one capital and small letter.'
     });
 
 const validateLastName = Joi.string()
-    .trim()
     .pattern(/^[A-Za-z]+$/)
     .required()
     .messages({
         'string.empty': 'Last name cannot be empty',
         'string.pattern.base': 'Last name must consist of letters only',
-        'any.required': 'Last name is required'
+    });
+
+const validateFirstName = Joi.string()
+    .required()
+    .pattern(/^[A-Za-z]+$/)
+    .messages({
+        'string.empty': 'First name cannot be empty',
+        'string.pattern.base': 'First name must consist of letters only',
     });
 
 const validateCity = Joi.string()
-    .trim()
-    // .required()
+    .required()
+    .pattern(/^[A-Za-z]+$/)
     .messages({
         'string.empty': 'City cannot be empty',
-        'any.required': 'City is required'
+        'string.pattern.base': 'City must consist of letters only'
     });
 
 const validateRegion = Joi.string()
-    .trim()
-    // .required()
+    .required()
+    .pattern(/^[A-Za-z]+$/)
     .messages({
         'string.empty': 'Region cannot be empty',
-        'any.required': 'Region is required'
+        'string.pattern.base': 'Region must consist of letters only'
     });
 
 const validateZipCode = Joi.string()
-    .trim()
-    // .required()
+    .required()
+    .min(3)
+    .max(15)
     .messages({
+        'string.min': 'Zip code must be longer than 3 characters.',
+        'string.max': 'Zip code should not contain more than 15 characters.',
         'string.empty': 'Zip code cannot be empty',
-        'any.required': 'Zip code is required'
     });
 
 const validateBuild = Joi.string()
-    .trim()
     .required()
+    .min(1)
     .messages({
         'string.empty': 'Build number cannot be empty',
-        'any.required': 'Build number is required'
-    });
-const validateStreet = Joi.string()
-    // .required()
-    .messages({
-        'string.empty': 'Street cannot be empty',
-        'any.required': 'Street is required'
     });
 
 const validatePhoneNumber = Joi.string()
-    .trim()
-    .pattern(/^[0-9]{10}$/)
     .required()
+    .pattern(/^[0-9]{10}$/)
     .messages({
         'string.empty': 'Phone number cannot be empty',
         'string.pattern.base': 'Phone number must consist of 10 digits',
         'any.required': 'Phone number is required'
+    });
+
+const validateStreet = Joi.string()
+    .required()
+    .messages({
+        'string.empty': 'Street cannot be empty',
     });
 
 const validateEmail = Joi.string()
@@ -91,7 +87,6 @@ const validateEmail = Joi.string()
         'string.max': 'The email should not contain more than 320 characters.',
         'string.pattern.base': 'The email must contain a valid ending.'
     });
-
 
 export {
     validateEmail,

@@ -10,10 +10,10 @@ const Books: FC = () => {
 
   const {books,prev,next} = useAppSelector(state => state.books);
   const dispatch = useAppDispatch();
-  const [query,setQuery] = useSearchParams({pageNumber: "1"});
+  const [query,setQuery] = useSearchParams({pageNumber: '1'});
 
     useEffect(()=>{
-        dispatch(bookAction.getAll(+{pageNumber : query.get("pageNumber")}))
+        dispatch(bookAction.getAll({pageNumber : +query.get("pageNumber")!}))
     },[query])
 
     const prevPage =()=>{
@@ -27,7 +27,6 @@ const Books: FC = () => {
 
     return (
         <div>
-            Books
             {books.map(book => <Book book={book} key={book.id}/>)}
             <button disabled={!prev} onClick={prevPage}>Prev</button>
             <button disabled={!next} onClick={nextPage}>Next</button>

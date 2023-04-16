@@ -1,18 +1,20 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 import {UserInterface} from "../../interfaces";
-import { login, register} from "../thunk/auth.thunk";
+import {login, register} from "../thunk/auth.thunk";
 import {authService} from "../../services/auth.service";
 
 interface AuthState {
     user: UserInterface | null;
-    errors: unknown,
+    errorFromBack: string,
     isAuth: boolean,
+    registeredUser: UserInterface | null,
 }
 const initialUserState: AuthState = {
     user: null,
-    errors: null,
+    errorFromBack: '',
     isAuth: false,
+    registeredUser: null,
 };
 
 const authSlice = createSlice({
@@ -25,22 +27,24 @@ const authSlice = createSlice({
     },
     extraReducers: builder =>
         builder
-            // .addCase(getAccessToken.fulfilled,(state, action)=>{
-            //     state.authToken = action.payload
-            //     console.log(state.authToken);
-            // })
             .addCase(login.fulfilled, (state, action)=>{
                 authService.setTokens({access: action.payload.accessToken});
-                state.isAuth = true
-                console.log(state.isAuth);
+                state.isAuth = true;
             })
-            .addCase(register.fulfilled, (state, action)=>{
-                const [type] = action.type.split('/').slice(-1);
-                if (type === 'rejected'){
-                    state.errors = action.payload;
-                }else {
-                    state.errors = null;
-                }
+            .addCase(login.rejected,(state, {payload}: any)=>{
+               state.errorFromBack = payload.error ?? 'Something went Wrong';
+            })
+            // .addCase(register.fulfilled, (state, action)=>{
+            //     state.registeredUser = action.payload;
+            //     const [type] = action.type.split('/').slice(-1);
+            //     if (type === 'rejected'){
+            //         // state.errorFromBack = action.payload?.message;
+            //     }else {
+            //         // state.errorFromBack = null;
+            //     }
+            // })
+            .addCase(register.rejected,(state, {payload}: any)=>{
+                state.errorFromBack = payload.error ?? 'Something went Wrong';
             })
 });
 
@@ -49,7 +53,6 @@ const {reducer: authReducer} = authSlice;
 const authAction= {
     register,
     login,
-    // getAccessToken
 };
 
 export {

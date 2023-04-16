@@ -1,9 +1,9 @@
 import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
-import {BookDetailsPage, BooksPage, FormPage, NotFoundPage, Settings} from "../pages";
+
+import {BookDetailsPage, BooksPage, AddBookForm, NotFoundPage, Settings} from "../pages";
 import {LogIn, SingUp} from "../pages";
 import {MainLayout} from "../layouts";
-import {FormToTake} from "../pages/FormToTake/formToTake";
 import PrivateRoute from "./privateRoute";
 
 function DashboardRoutes() {
@@ -16,8 +16,7 @@ function DashboardRoutes() {
                     <Route path={'books'} element={<BooksPage/>}/>
                     <Route path={'books/:id'} element={<BookDetailsPage/>}/>
                 </Route>
-                <Route path={'give_book_form'} element={<PrivateRoute><FormPage/></PrivateRoute>} />
-                <Route path={'take_book_form'} element={<PrivateRoute><FormToTake/></PrivateRoute>} />
+                <Route path={'give_book_form'} element={<PrivateRoute><AddBookForm/></PrivateRoute>} />
                 <Route path={'settings'} element={<PrivateRoute><Settings/></PrivateRoute>}/>
                 <Route path={'login'} element={<LogIn/>}/>
                 <Route path={'register'} element={<SingUp/>}/>
@@ -26,5 +25,4 @@ function DashboardRoutes() {
         </>
     );
 }
-
 export {DashboardRoutes};

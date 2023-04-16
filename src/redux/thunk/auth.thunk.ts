@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {TokenData, UserInterface, UserLoginInterface, UserToken} from "../../interfaces";
+import { UserInterface, UserLoginInterface, UserToken} from "../../interfaces";
 import {AxiosError} from "axios";
 import {authService} from "../../services/auth.service";
 
@@ -28,16 +28,3 @@ export const login = createAsyncThunk<UserToken,{ user: UserLoginInterface} >(
         }
     }
 );
-
-// export const getAccessToken = createAsyncThunk<any, void>(
-//     'authSlice/getAccessToken',
-//     async (_,{rejectWithValue})=>{
-//        try {
-//            const {data} = await authService.getAccessToken();
-//            return data;
-//        }catch (e) {
-//            const error = e as AxiosError
-//            return rejectWithValue(error.response?.data);
-//        }
-//     }
-// )

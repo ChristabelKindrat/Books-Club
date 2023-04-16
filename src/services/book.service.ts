@@ -1,12 +1,17 @@
 import {AxiosRes, axiosService} from "./axios.service";
-import {BookInterface} from "../interfaces";
+import {BookInterface, BookPaginationInterface, CategoryInterface, TagsInterface} from "../interfaces";
 import {urls} from "../utils/constansts/urls";
 
-
 export const bookService = {
-    getAll:(pageNumber = 1):AxiosRes<BookInterface[]> =>axiosService.get(urls.books),
+    getAll:(pageNumber = 1,term?:string):AxiosRes<BookPaginationInterface> =>axiosService.get(term ? `${urls.books}?searchType=name&searchValue=${term}` : `${urls.books}`, {params:{pageNumber}}),
     getById:(id: number):AxiosRes<BookInterface> =>axiosService.get(`${urls.books}/${id}`),
+
     postBook:(book: BookInterface):AxiosRes<BookInterface> => axiosService.post(urls.books, book),
-    patchBook:(image: string):AxiosRes<BookInterface> => axiosService.patch(urls.books, image),
-    deleteById:(id: number):AxiosRes<BookInterface> => axiosService.delete(`${urls.books}/${id}`)
+    patchBook:(id:number, image: unknown):AxiosRes<BookInterface> => axiosService.patch(`${urls.books}/${id}`, image),
+    deleteById:(id: number):AxiosRes<BookInterface> => axiosService.delete(`${urls.books}/${id}`),
+
+    postUserToBook: (book_id: number | undefined, user_id: number | undefined) => axiosService.post(`${urls.books}/${book_id}/users/${user_id}`),
+
+    getCategories:():AxiosRes<CategoryInterface[]> => axiosService.get(urls.category),
+    getTags:():AxiosRes<TagsInterface[]> => axiosService.get(urls.tags),
 }

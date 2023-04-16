@@ -1,14 +1,20 @@
-interface UserInfoInterface {
+interface UserInfoInterface extends PhoneNumberInterface{
     id?: number,
     active?: boolean,
     first_name: string,
-    last_name:string,
+    last_name:string
+}
+
+interface UserInfoLoginInterface extends UserInfoInterface,UserLoginInterface{
+}
+
+interface PhoneNumberInterface{
     phone_number: number
 }
 
 interface UserLoginInterface{
     email: string,
-    password: string,
+    password?: string,
 }
 
 interface AddressInterface{
@@ -20,7 +26,7 @@ interface AddressInterface{
     zip_code: string
 }
 interface PhotoInterface{
-    photo_url?: string | null
+    photo_url: string | null
 }
 
 interface UserInterface extends UserInfoInterface,UserLoginInterface, PhotoInterface{
@@ -44,8 +50,10 @@ export type {
     AddressInterface,
     UserToken,
     TokenData,
-    PhotoInterface
-}
+    PhotoInterface,
+    PhoneNumberInterface,
+    UserInfoLoginInterface
+};
 
 
 

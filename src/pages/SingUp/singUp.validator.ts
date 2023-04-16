@@ -5,13 +5,16 @@ import {
     validateEmail,
     validateFirstName,
     validateLastName,
-    validatePassword, validatePhoneNumber,
-    validateRegion, validateStreet, validateZipCode
+    validatePassword,
+    validatePhoneNumber,
+    validateRegion,
+    validateStreet,
+    validateZipCode
 } from '../../validators';
 
 const registerValidator = Joi.object({
-    firstName: validateFirstName,
-    lastName: validateLastName,
+    first_name: validateFirstName,
+    last_name: validateLastName,
     city: validateCity,
     region: validateRegion,
     build_number: validateBuild,
