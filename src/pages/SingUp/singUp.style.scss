@@ -1,0 +1,51 @@
+@import "src/styles/vars.styles";
+
+//div{
+//  display: flex;
+//  flex-direction: column;
+//}
+
+.text_step{
+
+  @extend %montserrat-light-300;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.register_form{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 20px;
+
+ &__info, &__address1, &__address2,&__data {
+   display: flex;
+   justify-content: center;
+   grid-gap: 30px;
+   padding: 20px;
+ }
+
+  button{
+    display: flex;
+    justify-content: center;
+    grid-gap: 30px;
+    padding: 20px;
+  }
+}
+
+.form-uploader{
+  grid-gap: 40px;
+  input[type="file"] {
+    display: none;
+  }
+  .file_uploader{
+    background: $primaryColor;
+    color: $primaryColor400;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+}

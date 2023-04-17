@@ -33,7 +33,7 @@ interface BookInterface extends PhotoInterface{
 
 interface TagsInterface{
     id: number,
-    name: string,
+    name?: string,
 }
 
 interface CategoryInterface {

@@ -41,6 +41,7 @@ const BookSlice = createSlice({
             .addCase(postBook.fulfilled, (state, action)=>{
                 state.books.push(action.payload);
                 state.sendBookId = action.payload.id!
+                console.log(state.sendBookId);
             })
 });
 

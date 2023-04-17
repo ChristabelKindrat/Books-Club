@@ -10,19 +10,22 @@ const Books: FC = () => {
 
   const {books,prev,next} = useAppSelector(state => state.books);
   const dispatch = useAppDispatch();
-  const [query,setQuery] = useSearchParams({pageNumber: '1'});
+  const [query,setQuery] = useSearchParams({pageNumber: '0'});
 
     useEffect(()=>{
         dispatch(bookAction.getAll({pageNumber : +query.get("pageNumber")!}))
     },[query])
 
     const prevPage =()=>{
-        const page= +!query.get("pageNumber") - 1;
-       setQuery({pageNumber: `${page}`});
+        const page= +query.get("pageNumber")! - 1;
+
+        setQuery(page == -1 ? {pageNumber: '0'} : {pageNumber: `${page}`});
     }
     const nextPage =()=>{
-        const page= +!query.get("pageNumber") + 1;
+        const page= +query.get("pageNumber")! + 1;
+
         setQuery({pageNumber: `${page}`});
+
     }
 
     return (

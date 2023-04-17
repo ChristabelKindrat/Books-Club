@@ -51,7 +51,7 @@ const LogIn:FC = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(submit)}>
+        <form onSubmit={handleSubmit(submit)} className={'form'}>
             <Input
                 type={'email'}
                 value={'Email'}
@@ -64,12 +64,12 @@ const LogIn:FC = () => {
                 {...register('password')}
                 errorText={errors.password?.message}
             />
-            <div>
-                Don't have account yet?
-                <Button type={'button'} onClick={()=>{navigate('/register')}}>Register</Button>
+            <div className={'form__register'}>
+                <span>Don't have account yet?</span>
+                <Button type={'button'} fullWidth={false} onClick={()=>{navigate('/register')}}>Register</Button>
             </div>
             {errorFromBack && <span>{errorFromBack}</span>}
-            <Button type={'submit'} fullWidth={false}>
+            <Button type={'submit'} fullWidth={false} >
                 Login
             </Button>
         </form>

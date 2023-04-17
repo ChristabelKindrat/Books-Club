@@ -1,0 +1,12 @@
+@import 'src/styles/vars.styles.scss';
+
+.form{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  &__register{
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
+  }
+}

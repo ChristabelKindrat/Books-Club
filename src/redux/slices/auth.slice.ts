@@ -34,15 +34,16 @@ const authSlice = createSlice({
             .addCase(login.rejected,(state, {payload}: any)=>{
                state.errorFromBack = payload.error ?? 'Something went Wrong';
             })
-            // .addCase(register.fulfilled, (state, action)=>{
-            //     state.registeredUser = action.payload;
-            //     const [type] = action.type.split('/').slice(-1);
-            //     if (type === 'rejected'){
-            //         // state.errorFromBack = action.payload?.message;
-            //     }else {
-            //         // state.errorFromBack = null;
-            //     }
-            // })
+            .addCase(register.fulfilled, (state, action)=>{
+                state.registeredUser = action.payload;
+                console.log(state.registeredUser);
+                const [type] = action.type.split('/').slice(-1);
+                if (type === 'rejected'){
+                    // state.errorFromBack = action.payload?.message;
+                }else {
+                    // state.errorFromBack = null;
+                }
+            })
             .addCase(register.rejected,(state, {payload}: any)=>{
                 state.errorFromBack = payload.error ?? 'Something went Wrong';
             })

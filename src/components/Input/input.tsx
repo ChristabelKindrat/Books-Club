@@ -19,12 +19,13 @@ const Input: FC<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(
         return (
             <>
                 <input type={type}
-                    // fullWidth={fullWidth}
+                       style={fullWidth ? {width: '100%'} : {width: 'auto'}}
                        defaultValue={defaultV}
                        placeholder={value}
                        value={defaultText}
                        ref={ref}
                        onChange={onChange}
+                       className={'mane_input'}
                        {...rest}
                 />
                 {errorText && <span className="">{errorText}</span> || errorFromBack &&

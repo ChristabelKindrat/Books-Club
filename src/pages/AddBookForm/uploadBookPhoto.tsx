@@ -2,10 +2,12 @@ import React, {FormEvent, useState} from 'react';
 
 import {useAppSelector} from "../../hooks";
 import {bookService} from "../../services/book.service";
+import {useNavigate} from "react-router-dom";
 
 const UploadPhoto = () => {
     const [selectedFile, setSelectedFile] = useState<Blob | string>('');
-    const {activeUser} = useAppSelector(state => state.user);
+    const {sendBookId} = useAppSelector(state => state.books);
+    const navigate = useNavigate();
 
     const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -13,7 +15,8 @@ const UploadPhoto = () => {
 
         formData.append("image", selectedFile);
         try {
-            await bookService.patchBook( activeUser?.id!,formData);
+            await bookService.patchBook( sendBookId!,formData);
+            navigate('/books')
         } catch(error) {
             console.log(error)
         }

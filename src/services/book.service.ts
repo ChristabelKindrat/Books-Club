@@ -3,7 +3,7 @@ import {BookInterface, BookPaginationInterface, CategoryInterface, TagsInterface
 import {urls} from "../utils/constansts/urls";
 
 export const bookService = {
-    getAll:(pageNumber = 1,term?:string):AxiosRes<BookPaginationInterface> =>axiosService.get(term ? `${urls.books}?searchType=name&searchValue=${term}` : `${urls.books}`, {params:{pageNumber}}),
+    getAll:(pageNumber = 0,term?:string):AxiosRes<BookPaginationInterface> =>axiosService.get(`${urls.books}`, {params:{pageNumber}}),
     getById:(id: number):AxiosRes<BookInterface> =>axiosService.get(`${urls.books}/${id}`),
 
     postBook:(book: BookInterface):AxiosRes<BookInterface> => axiosService.post(urls.books, book),
