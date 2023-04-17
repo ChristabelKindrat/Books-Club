@@ -1,1 +1,9 @@
 @import "src/styles/vars.styles";
+
+.main_layout_wrap{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 50px;
+  padding: 25px;
+}

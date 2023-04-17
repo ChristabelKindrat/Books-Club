@@ -29,10 +29,14 @@ const Books: FC = () => {
     }
 
     return (
-        <div>
-            {books.map(book => <Book book={book} key={book.id}/>)}
-            <button disabled={!prev} onClick={prevPage}>Prev</button>
-            <button disabled={!next} onClick={nextPage}>Next</button>
+        <div className={'books_wrap'}>
+            <div className={'books_list'}>
+                {books.map(book => <Book book={book} key={book.id}/>)}
+            </div>
+            <div className={'books_wrap__buttons'}>
+                <button disabled={!prev} onClick={prevPage}>Prev</button>
+                <button disabled={!next} onClick={nextPage}>Next</button>
+            </div>
         </div>
     );
 }

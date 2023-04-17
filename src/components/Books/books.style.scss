@@ -1,0 +1,16 @@
+
+.books_wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 40px;
+  &__buttons{
+
+  }
+}
+
+.books_list{
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -6,7 +6,7 @@ import {Outlet} from "react-router-dom";
 
 const MainLayout = () => {
     return (
-        <div className={'header_wrap'}>
+        <div className={'main_layout_wrap'}>
             <Header/>
             <Outlet/>
         </div>

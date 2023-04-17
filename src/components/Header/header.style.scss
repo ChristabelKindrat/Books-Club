@@ -1,21 +1,62 @@
+.header_wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  button{
+    height: fit-content;
+  }
+}
 
 .input_container{
   position: relative;
 
+  &__search_input {
+    border: none;
+    padding: 20px;
+    border-radius: 45px;
+  }
+
+  img{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    max-width: 30px;
+  }
 }
+
 .input_container input[type="text"] {
-  padding-left: 30px;
+  padding-left: 60px;
 }
 
-.input_container i {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+.user_header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__books{
+    max-height: 30px;
+    max-width: 30px;
+  }
+  &__photo{
+    max-height: 100px;
+    max-width: 100px;
+    border-radius: 50%;
+  }
+  &__info_name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 10px;
+    margin: 15px;
+    text-align: center;
+
+    width: max-content;
+  }
+  &__info{
+    display: flex;
+    justify-content: center;
+    grid-gap: 10px;
+  }
 }
 
-.search_input{
-  content: url("");
-  border: none;
-  padding: 20px;
-  border-radius: 45px;
-}

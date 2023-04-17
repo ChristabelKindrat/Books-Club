@@ -26,7 +26,7 @@ function SideBar() {
     }, [])
 
     return (
-        <div>
+        <div className={'side_bar_wrap'}>
             <div>
                 <img src={user_reading} alt="photo"/>
                 <div>{activeUser?.first_name} {activeUser?.last_name}</div>
