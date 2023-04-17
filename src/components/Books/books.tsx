@@ -5,6 +5,7 @@ import {Book} from "../index";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {bookAction} from "../../redux";
 import {useSearchParams} from "react-router-dom";
+import {arrow_left, arrow_right} from "../../assets";
 
 const Books: FC = () => {
 
@@ -34,8 +35,10 @@ const Books: FC = () => {
                 {books.map(book => <Book book={book} key={book.id}/>)}
             </div>
             <div className={'books_wrap__buttons'}>
-                <button disabled={!prev} onClick={prevPage}>Prev</button>
-                <button disabled={!next} onClick={nextPage}>Next</button>
+                {/*<img src={arrow_left} alt={arrow_left} aria-disabled={!prev} onClick={prevPage} width={50}/>*/}
+                {/*<img src={arrow_right} alt={arrow_right} aria-disabled={!next} onClick={nextPage} width={50}/>*/}
+                <button disabled={!prev} onClick={prevPage} className={'pagination_button'}>Prev page</button>
+                <button disabled={!next} onClick={nextPage} className={'pagination_button'}>Next page</button>
             </div>
         </div>
     );

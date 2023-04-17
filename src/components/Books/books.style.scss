@@ -1,3 +1,4 @@
+@import "src/styles/vars.styles";
 
 .books_wrap{
   display: flex;
@@ -9,8 +10,24 @@
 
   }
 }
+.pagination_button{
+  background: $background;
+  margin: 20px;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid $primaryColor400;
+  color: $primaryColor400;
+  font-size: 13px;
+
+  &:disabled {
+    opacity: 0.4;
+  }
+
+}
 
 .books_list{
   display: flex;
   flex-wrap: wrap;
+  grid-gap: 40px;
+  padding: 0 40px;
 }
