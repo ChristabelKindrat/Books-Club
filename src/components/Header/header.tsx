@@ -7,6 +7,7 @@ import {Button} from "../Button/button";
 import {userService} from "../../services/user.service";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {SideBar} from "../SideBar/sideBar";
+import {search} from "../../assets";
 
 const Header:FC = () => {
     const navigate = useNavigate();
@@ -31,9 +32,11 @@ const Header:FC = () => {
     return (
         <div>
             <div>
-                <form onSubmit={submitHandler}>
-                    <input type={'text'} value = {term} placeholder={"Searching Books"} onChange={(e)=>setTerm(e.target.value)}/>
-                    <button type={'submit'}> search</button>
+                <form onSubmit={submitHandler} className={'input_container'} >
+                    <input type={'text'} value = {term} placeholder={"Books titles"} onChange={(e)=>setTerm(e.target.value)} className={"search_input"}/>
+                    <img src={search} alt={'search'}/>
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                    {/*<button type={'submit'}></button>*/}
                 </form>
             </div>
             Header

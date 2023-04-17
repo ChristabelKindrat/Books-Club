@@ -1,0 +1,21 @@
+
+.input_container{
+  position: relative;
+
+}
+.input_container input[type="text"] {
+  padding-left: 30px;
+}
+
+.input_container i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.search_input{
+  content: url("");
+  border: none;
+  padding: 20px;
+  border-radius: 45px;
+}
