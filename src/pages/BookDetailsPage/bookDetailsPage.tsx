@@ -1,6 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 
+import './bookDetailsPage.style.scss';
+
 import {useAppDispatch, useAppLocation, useAppSelector} from "../../hooks";
 import {BookInterface} from "../../interfaces";
 import {Button} from "../../components";
