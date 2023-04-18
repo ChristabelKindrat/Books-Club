@@ -1,5 +1,5 @@
 import {AxiosRes, axiosService} from "./axios.service";
-import {BookInterface, BookPaginationInterface, CategoryInterface, TagsInterface} from "../interfaces";
+import {BookInterface, BookPaginationInterface, CategoryInterface, TagsInterface, UserBooks} from "../interfaces";
 import {urls} from "../utils/constansts/urls";
 
 export const bookService = {
@@ -11,6 +11,7 @@ export const bookService = {
     deleteById:(id: number):AxiosRes<BookInterface> => axiosService.delete(`${urls.books}/${id}`),
 
     postUserToBook: (book_id: number | undefined, user_id: number | undefined) => axiosService.post(`${urls.books}/${book_id}/users/${user_id}`),
+    approveBook:(book_id: number ,user_id: number): AxiosRes<UserBooks[]>=>axiosService.post(`${urls.books}/${book_id}/users/${user_id}/approve`),
 
     getCategories:():AxiosRes<CategoryInterface[]> => axiosService.get(urls.category),
     getTags:():AxiosRes<TagsInterface[]> => axiosService.get(urls.tags),

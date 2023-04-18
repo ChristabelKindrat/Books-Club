@@ -1,15 +1,16 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 import {BookInterface} from "../../interfaces";
-import {getAll, getById, postBook} from "../thunk/books.thunk";
+import { getAll, getById, postBook} from "../thunk/books.thunk";
 
 interface BookStateInterface{
     books: BookInterface[],
     bookById: BookInterface | null,
     next: string | null,
     prev: string | null,
-    sendBookId: number | null, //change to undefined,
+    sendBookId: number | null,
     errors: unknown,
+    // book_status: boolean
 }
 
 const initialBookState: BookStateInterface= {
@@ -18,7 +19,8 @@ const initialBookState: BookStateInterface= {
     next: null,
     prev: null,
     sendBookId: null,
-    errors: null
+    errors: null,
+    // book_status: false,
 };
 
 const BookSlice = createSlice({
@@ -27,6 +29,9 @@ const BookSlice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
+            // .addCase(approveBook.fulfilled,(state, action)=>{
+            //     state.book_status = true;
+            // })
             .addCase(getById.fulfilled,(state, action)=>{
                 state.bookById = action.payload
             })
@@ -50,7 +55,7 @@ const {reducer: bookReducer} = BookSlice;
 const bookAction ={
     getAll,
     postBook,
-    getById
+    getById,
 };
 
 export {

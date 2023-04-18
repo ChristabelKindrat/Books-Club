@@ -1,4 +1,4 @@
-import {UserInterface} from "./user.interface";
+import {AddressInterface, UserInterface} from "./user.interface";
 
 interface PhotoInterface{
     photo_url?: string | null
@@ -31,6 +31,19 @@ interface BookInterface extends PhotoInterface{
     owner: UserInterface,
 }
 
+interface UserBooks extends BookInterface{
+    status: string,
+    buyers: BuyersInterface[]
+}
+
+interface BuyersInterface{
+    id: number,
+    email: string,
+    address: AddressInterface,
+    first_name: string,
+    last_name: string,
+}
+
 interface TagsInterface{
     id: number,
     name?: string,
@@ -46,4 +59,5 @@ export type {
     BookPaginationInterface,
     TagsInterface,
     CategoryInterface,
+    UserBooks,
 };

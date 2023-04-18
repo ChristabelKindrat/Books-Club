@@ -1,19 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
-import {BookInterface} from "../../interfaces";
-import {userService} from "../../services/user.service";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {userAction} from "../../redux";
 
 
 const UserWantsBooks = () => {
     const dispatch = useAppDispatch();
-    const { userWantBooks} = useAppSelector(state => state.user)
-    const { sendBookId} = useAppSelector(state => state.books)
+    const { userWantBooks, activeUser} = useAppSelector(state => state.user)
 
-    //todo user want book what id
     useEffect(()=>{
-        dispatch(userAction.getUserWantBooks(sendBookId!));
+        dispatch(userAction.getUserWantBooks(activeUser?.id!));
     },[])
 
     return (

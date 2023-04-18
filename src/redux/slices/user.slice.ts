@@ -1,11 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-import {BookInterface, UserInterface} from "../../interfaces";
+import {BookInterface, UserBooks, UserInterface} from "../../interfaces";
 import {getActiveUser, getUserBooks, getUserWantBooks} from "../thunk/user.thunk";
 
 interface UserStateInterface {
     activeUser: UserInterface | null,
-    userBooks:BookInterface [] | null,
+    userBooks:UserBooks[] | null,
     userWantBooks: BookInterface [] | null,
 }
 

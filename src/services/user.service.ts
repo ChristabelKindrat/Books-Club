@@ -1,6 +1,6 @@
 import {AxiosRes, axiosService} from "./axios.service";
 
-import {AddressInterface, BookInterface, UserInfoLoginInterface, UserInterface} from "../interfaces";
+import {AddressInterface, BookInterface, UserBooks, UserInfoLoginInterface, UserInterface} from "../interfaces";
 import {urls} from "../utils/constansts/urls";
 
 export const userService = {
@@ -17,7 +17,8 @@ export const userService = {
     deleteById:(id: number) => axiosService.delete(`${urls.users}/${id}`),
 
     getUserWantBooks:(id: number):AxiosRes<BookInterface[]> => axiosService.get(`${urls.users}/${id}/books`),
-    getUserBooks:(id: number):AxiosRes<BookInterface[]> => axiosService.get(`${urls.users}/${id}/personal-books`),
+    getUserBooks:(id: number):AxiosRes<UserBooks[]> => axiosService.get(`${urls.users}/${id}/personal-books`),
+
 
     isUserLogin: (): boolean => {
         const token =  localStorage.getItem('access')

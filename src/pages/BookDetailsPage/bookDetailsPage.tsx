@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 import './bookDetailsPage.style.scss';
 
@@ -17,6 +17,7 @@ const BookDetailsPage: FC = () => {
     const {state} = useAppLocation<BookInterface>();
     const [book, setBook] = useState<BookInterface | null>(null);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
 //todo without ts-ignore
     useEffect(() => {
@@ -34,6 +35,8 @@ const BookDetailsPage: FC = () => {
     const sentRequest = async () => {
         try {
             await bookService.postUserToBook(book?.id, activeUser?.id);
+            navigate('/books');
+
         } catch (e) {
             console.log(e);
         }

@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {BookInterface, UserInterface} from "../../interfaces";
+import {BookInterface, UserBooks, UserInterface} from "../../interfaces";
 import {userService} from "../../services/user.service";
 
 export const getActiveUser = createAsyncThunk<UserInterface, void>(
@@ -17,7 +17,7 @@ export const getActiveUser = createAsyncThunk<UserInterface, void>(
     }
 );
 
-export const getUserBooks =  createAsyncThunk<BookInterface[], number>(
+export const getUserBooks =  createAsyncThunk<UserBooks[], number>(
     'authSlice/getUserBooks',
     async (id,{rejectWithValue}) =>{
         try{

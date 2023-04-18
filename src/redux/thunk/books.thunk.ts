@@ -42,3 +42,16 @@ export const postBook = createAsyncThunk<BookInterface, {book:BookInterface}>(
         }
     }
 );
+//
+// export const approveBook = createAsyncThunk <BookInterface, {book_id: number,user_id:number}>(
+//     'BookSlice/approveBook',
+//     async ({book_id, user_id}, {rejectWithValue})=> {
+//         try{
+//             const {data} = await bookService.approveBook(user_id,book_id)
+//             return data;
+//         }catch (e) {
+//             const error = e as AxiosError
+//             return rejectWithValue(error.response?.data);
+//         }
+//     }
+// )
