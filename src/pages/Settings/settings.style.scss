@@ -1,0 +1,35 @@
+@import "src/styles/vars.styles";
+
+.setting_wrap {
+  width: 100%;
+  padding: 20px;
+
+  &__back {
+    width: 40px;
+    margin-left: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  &__header_txt {
+    font-weight: bold;
+    padding: 20px;
+    border-top: 1px solid $primaryColor400;
+  }
+
+  &__exit {
+    padding: 20px;
+
+    span {
+      padding-right: 10px;
+    }
+  }
+}
+
+.form-wrapper {
+  padding: 20px;
+
+  span {
+    padding: 20px;
+  }
+}

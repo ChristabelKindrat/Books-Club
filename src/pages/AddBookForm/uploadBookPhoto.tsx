@@ -3,6 +3,7 @@ import React, {FormEvent, useState} from 'react';
 import {useAppSelector} from "../../hooks";
 import {bookService} from "../../services/book.service";
 import {useNavigate} from "react-router-dom";
+import {Button} from "../../components";
 
 const UploadPhoto = () => {
     const [selectedFile, setSelectedFile] = useState<Blob | string>('');
@@ -16,7 +17,6 @@ const UploadPhoto = () => {
         formData.append("image", selectedFile);
         try {
             await bookService.patchBook( sendBookId!,formData);
-            navigate('/books')
         } catch(error) {
             console.log(error)
         }
@@ -27,9 +27,12 @@ const UploadPhoto = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleFileSelect}/>
-            <input type="submit" value="Upload File" />
+        <form onSubmit={handleSubmit} className={'form-wrapper form-uploader'}>
+            <label className={'file_uploader'}>
+                <input type="file" onChange={handleFileSelect} />
+                Click to add file!
+            </label>
+            <Button type={'submit'} onClick={()=>{navigate('/books')}}>Save File</Button>
         </form>
     )
 };

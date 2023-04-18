@@ -25,7 +25,9 @@ const ChangeAddress: FC = () => {
     }
 
     return (
-        <form onChange={handleSubmit(submit)}>
+        <form onChange={handleSubmit(submit)} className={'form-wrapper'}>
+            <div>
+            <span>City :</span>
             <Input
                 defaultV={activeUser?.address.city ?? ''}
                 type={'text'}
@@ -33,6 +35,9 @@ const ChangeAddress: FC = () => {
                 {...register('city')}
                 // errorText={errors.city?.message}
             />
+            </div>
+            <div>
+            <span>Region :</span>
             <Input
                 defaultV={activeUser?.address.region ?? ''}
                 type={'text'}
@@ -40,6 +45,9 @@ const ChangeAddress: FC = () => {
                 {...register('region')}
                 // errorText={errors.region?.message}
             />
+            </div>
+            <div>
+                <span>Zip Code : </span>
             <Input
                 defaultV={activeUser?.address.zip_code ?? ''}
                 type={'text'}
@@ -47,6 +55,9 @@ const ChangeAddress: FC = () => {
                 {...register('zip_code')}
                 // errorText={errors.zip_code?.message}
             />
+            </div>
+            <div>
+            <span>Street :</span>
             <Input
                 defaultV={activeUser?.address.street ?? ''}
                 type={'text'}
@@ -54,6 +65,9 @@ const ChangeAddress: FC = () => {
                 {...register('street')}
                 // errorText={errors.street?.message}
             />
+            </div>
+            <div>
+            <span>Build Number :</span>
             <Input
                 defaultV={activeUser?.address.build_number ?? ''}
                 type={'text'}
@@ -61,7 +75,7 @@ const ChangeAddress: FC = () => {
                 {...register('build_number')}
                 // errorText={errors.build?.message}
             />
-
+            </div>
             <Button type={'submit'} >Save new address</Button>
         </form>
     );

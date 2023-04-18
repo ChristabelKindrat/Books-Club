@@ -1,0 +1,66 @@
+@import "src/styles/vars.styles";
+
+.book_info {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  grid-gap: 70px;
+
+  &__photo_wrap {
+  }
+
+  &__tags{
+    display: flex;
+    justify-content: center;
+    grid-gap: 15px;
+  }
+
+  &__photo {
+    height: 600px;
+    width: 500px;
+    border-radius: 30px;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+  }
+  &__owner{
+    display: flex;
+    justify-content: center;
+    grid-gap: 30px;
+  }
+
+  &__name {
+    @extend %cormorant-garamond-400;
+    font-size: 40px;
+    font-weight: bold;
+
+  }
+
+  &__author {
+
+  }
+
+  &__description {
+    line-height: 1.5;
+    flex-wrap: wrap;
+    max-width: 700px;
+
+  }
+
+  &__tag {
+
+  }
+
+  &__city{
+    text-align: center;
+  }
+
+  &__user {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 50%;
+  }
+}

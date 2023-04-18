@@ -6,7 +6,6 @@ import './header.style.scss';
 import {Button} from "../Button/button";
 import {userService} from "../../services/user.service";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {SideBar} from "../SideBar/sideBar";
 import {bar, book, search, user_reading} from "../../assets";
 
 const Header: FC = () => {
@@ -44,7 +43,6 @@ const Header: FC = () => {
                     <img src={search} alt={'search'} className={'input_container__search_svg'}/>
                     {/*<button type={'submit'}></button>*/}
                 </form>
-
 
             {userIsLogin ?
                 <div className={'user_header'}>

@@ -1,13 +1,18 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {UserInterface} from "../../interfaces";
-import {getActiveUser} from "../thunk/user.thunk";
+
+import {BookInterface, UserInterface} from "../../interfaces";
+import {getActiveUser, getUserBooks, getUserWantBooks} from "../thunk/user.thunk";
 
 interface UserStateInterface {
     activeUser: UserInterface | null,
+    userBooks:BookInterface [] | null,
+    userWantBooks: BookInterface [] | null,
 }
 
 const initialUserState: UserStateInterface = {
     activeUser: null,
+    userBooks: null,
+    userWantBooks: null,
 };
 
 const userSlice = createSlice({
@@ -16,6 +21,12 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers:builder =>
         builder
+            .addCase(getUserWantBooks.fulfilled,(state, action)=>{
+                state.userWantBooks = action.payload
+            })
+            .addCase(getUserBooks.fulfilled,(state, action)=>{
+                state.userBooks = action.payload
+            })
             .addCase(getActiveUser.fulfilled,(state, action)=>{
                 state.activeUser = action.payload;
             })
@@ -24,7 +35,9 @@ const userSlice = createSlice({
 const {reducer: userReducer} = userSlice;
 
 const userAction = {
-    getActiveUser
+    getActiveUser,
+    getUserBooks,
+    getUserWantBooks
 };
 
 export {

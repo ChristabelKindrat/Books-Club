@@ -35,7 +35,7 @@ const UploadUserPhoto = () => {
                 Click to add file!
             </label>
 
-            <Button type={'submit'}>Save File</Button>
+            <Button type={'submit'} onClick={()=>{navigate('/login')}}>Save File</Button>
         </form>
     )
 };
