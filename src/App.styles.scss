@@ -1,0 +1,55 @@
+@import "styles/global.module";
+@import "styles/reset.styles";
+
+:root {
+  --background: $background;
+  --primary-color: $primaryColor;
+  --text-color: $primaryColor400;
+  --container-background: $containerBackground;
+}
+
+* {
+  @extend %montserrat-light-300;
+  // color: var(--accent-text-color);
+}
+
+body {
+  line-height: 1.2;
+  font-family: sans-serif;
+  background-color: $background;
+  color: $primaryColor400;
+
+  //&::-webkit-scrollbar,
+  //&::-webkit-scrollbar-thumb {
+  //  width: 0;
+  //  height: 0;
+  //  margin: 0;
+  //  background-color: var(--background);
+  //}
+}
+
+.App {
+  background: $containerBackground;
+  transition: all .5s;
+  height: 95vh;
+  margin: 30px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  border-radius: 15px;
+  //box-shadow: $outerBoxShadow;
+  padding: 25px;
+  margin-top: 25px;
+
+  &__menu {
+    display: flex;
+    grid-gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

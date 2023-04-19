@@ -1,0 +1,19 @@
+$background : #f3e6d2;
+$containerBackground: #f8f3ee;
+
+$primaryColor: hsl(37, 61%, 64%);
+$primaryColor400: hsl(0, 1%, 28%);
+
+%montserrat-extra-light-200{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+
+%montserrat-light-300{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+%cormorant-garamond-400{
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}

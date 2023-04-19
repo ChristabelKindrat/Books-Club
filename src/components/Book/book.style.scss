@@ -1,0 +1,41 @@
+@import "src/styles/vars.styles";
+
+.book_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 30px;
+  max-width: 300px;
+  cursor: pointer;
+
+
+  &__photo {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 10px;
+    box-shadow: 19px 18px 17px #c4c2c2, 2px 3px 6px #ffffff;
+  }
+  &__photo_div{
+    max-width: 300px;
+    max-height: 200px;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+  }
+
+  &__name {
+    @extend %cormorant-garamond-400;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+
+  &__author {
+
+
+  }
+}

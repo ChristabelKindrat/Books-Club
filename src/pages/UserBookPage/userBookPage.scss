@@ -1,0 +1,96 @@
+@import "src/styles/vars.styles";
+
+.span_wrap{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+  align-items: center;
+  position: relative;
+
+  &__text{
+    background-color: $primaryColor;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: 1px solid;
+  }
+
+}
+
+.scroll_bar{
+  overflow: auto;
+  height: 100%;
+  width: max-content;
+}
+
+.list_user_books{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+}
+
+.books_user_wrap{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding-top: 50px;
+
+  &__arr{
+    max-width: 40px;
+    position: absolute;
+    left: -130px;
+    cursor: pointer;
+  }
+}
+
+.book_give{
+  display: flex;
+
+  &__photo{
+    border-radius: 10px;
+    max-width: 100px;
+    max-height: 90px;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  &__name{
+    @extend %cormorant-garamond-400;
+    font-weight: bold;
+  }
+
+  &__texts{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 5px;
+    align-items: flex-start;
+    padding: 10px;
+    justify-content: space-around;
+    span{
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      img{
+        display: flex;
+        align-items: flex-end;
+        padding-left: 10px;
+      }
+    }
+  }
+
+  &__points{
+    max-width: 20px;
+  }
+}
+
+.buyer_wrap{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+}
+
+.buyer{
+  display: flex;
+  font-size: 15px;
+  grid-gap: 10px;
+}

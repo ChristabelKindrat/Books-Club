@@ -1,0 +1,79 @@
+@import "src/styles/vars.styles";
+
+.form-wrapper-book{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+  padding-top: 10px;
+}
+.give_book_wrap{
+  display: flex;
+  padding: 30px;
+  align-items: center;
+  grid-gap: 60px;
+  justify-content: center;
+  width: 100%;
+
+  &__step1{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.text_book_form{
+  text-align: center;
+  @extend %cormorant-garamond-400;
+  font-size: 30px;
+  font-weight: bold;
+  color: #44341d;
+  padding: 30px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  position: relative;
+
+  &__arr{
+    max-width: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: -150px;
+  }
+
+}
+
+.arrow{
+  width: 50px;
+  margin: 25px;
+}
+.select_wrap{
+  border: none;
+  height: 42px;
+  width: 100%;
+  border-radius: 7px;
+  //height: 50px;
+  //border-radius: 15px;
+  color: #6b6b6b;
+  option{
+    background: #f3e6d2;
+  }
+}
+
+.form-uploader{
+  grid-gap: 40px;
+  input[type="file"] {
+    display: none;
+  }
+  .file_uploader{
+    background: $primaryColor;
+    color: $primaryColor400;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+}
+
+//.MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+//  background: #f8f3ee!important;
+//
+//}
