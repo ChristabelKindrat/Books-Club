@@ -1,4 +1,5 @@
 import React, {FormEvent, useState} from 'react';
+
 import {useAppSelector} from "../../hooks";
 import {userService} from "../../services/user.service";
 import {useNavigate} from "react-router-dom";
@@ -16,7 +17,6 @@ const UploadUserPhoto = () => {
 
         formData.append("image", selectedFile);
         try {
-            console.log(registeredUser?.id);
             await userService.patchPhotoById(formData, registeredUser?.id!);
             navigate('/login');
         } catch(error) {
@@ -35,7 +35,7 @@ const UploadUserPhoto = () => {
                 Click to add file!
             </label>
 
-            <Button type={'submit'} onClick={()=>{navigate('/login')}}>Save File</Button>
+            <Button type={'submit'} >Save File</Button>
         </form>
     )
 };

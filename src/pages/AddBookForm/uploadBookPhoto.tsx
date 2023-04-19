@@ -17,6 +17,7 @@ const UploadPhoto = () => {
         formData.append("image", selectedFile);
         try {
             await bookService.patchBook( sendBookId!,formData);
+            navigate('/books')
         } catch(error) {
             console.log(error)
         }
@@ -32,7 +33,7 @@ const UploadPhoto = () => {
                 <input type="file" onChange={handleFileSelect} />
                 Click to add file!
             </label>
-            <Button type={'submit'} onClick={()=>{navigate('/books')}}>Save File</Button>
+            <Button type={'submit'}>Save File</Button>
         </form>
     )
 };

@@ -1,6 +1,7 @@
 import React, {FC, useState} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import {TextField, AutocompleteRenderInputParams} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 import './addBookForm.scss';
 
@@ -10,17 +11,15 @@ import {Button, Input} from "../../components";
 import {MultipleSelectWithBadges} from "../../components/Input/input.whith.select";
 import UploadBookPhoto from "./uploadBookPhoto";
 import {bookAction} from "../../redux";
-import {arrow_right, check, minus} from "../../assets";
+import {arrow_left, arrow_right, check, minus} from "../../assets";
 
 const tags = [
-    {id: 1, name: 'Best Book2021'},
-    {id: 2, name: 'Best Book2006'},
-    {id: 3, name: 'Best Book2012'},
-    {id: 4, name: 'Best Book2014'},
-    {id: 5, name: 'Best Book2020'}
+    {id: 1, name: 'Bestseller'},
+    {id: 2, name: 'Best Book 2020'},
+    {id: 3, name: 'New'},
+    {id: 4, name: 'Used'}
 ]
-
-const categoryes = [
+const categories = [
     {
         id: 1,
         name: "Fiction"
@@ -123,30 +122,21 @@ const categoryes = [
     }
 ]
 
-
 const AddBookForm: FC = () => {
+
     const dispatch = useAppDispatch();
     const {activeUser} = useAppSelector(state => state.user);
-    const {sendBookId} = useAppSelector(state => state.books);
     const [chosenTags, setChosenTags,] = useState<TagsInterface[]>([]);
+    const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
+        reset
     } = useForm<BookInterface>();
-    const [value, setValue] = useState('option1');
-
-    const tagArray = [
-        {id: 1, name: 'Best Book2021'},
-        {id: 2, name: 'Best Book2006'},
-        {id: 3, name: 'Best Book2012'},
-        {id: 4, name: 'Best Book2014'},
-        {id: 5, name: 'Best Book2020'}
-    ];
 
     const handleMembersChange = (e: React.SyntheticEvent, members: string[]) => {
-        console.log(members);
-        setChosenTags(tagArray.filter(tag => members.includes(tag.name)).map(item => ({id: item.id})));
+        setChosenTags(tags.filter(tag => members.includes(tag.name)).map(item => ({id: item.id})));
     }
 
     const submit: SubmitHandler<BookInterface> = async (data) => {
@@ -155,35 +145,54 @@ const AddBookForm: FC = () => {
         // @ts-ignore
         data.category_id = parseInt(data.category_id)
         await dispatch(bookAction.postBook({book: data}));
+        reset();
     }
 
     return (
         <div>
-            <div className={'text_book_form'}> Give your book into good hands! </div>
+            <div className={'text_book_form'}>
+                <img src={arrow_left} alt={'arrow'}
+                     className={'text_book_form__arr'}
+                     onClick={() => navigate('/books')}
+                />
+                Give your book into good hands!
+            </div>
             <div className={'give_book_wrap'}>
                 <div className={'give_book_wrap__step1'}>
                     <h3>Step 1</h3>
                     <img src={arrow_right} alt={'arrow'} className={'arrow'}/>
                     <form onSubmit={handleSubmit(submit)} className={'form-wrapper-book'}>
-                        <Input type={'text'} value={'Name'} {...register('name')}/>
-                        <Input type={'description'} value={'Description'} {...register('description')}/>
-                        <Input type={'author_name'} value={'Author/s'} {...register('author_name')}/>
+                        <Input type={'text'}
+                               value={'Name'}
+                               {...register('name')}
+                        />
+                        <Input type={'description'}
+                               value={'Description'}
+                               {...register('description')}
+                        />
+                        <Input type={'author_name'}
+                               value={'Author/s'}
+                               {...register('author_name')}
+                        />
                         <div>
-                            <select id="selectInput" className={'select_wrap'} {...register('category_id')}>
-                                {categoryes.map((category) =>
+                            <select id="selectInput"
+                                    className={'select_wrap'}
+                                    {...register('category_id')}
+                            >
+                                {categories.map((category) =>
                                     <option key={category.id} value={category.id}>{category.name}</option>)}
                             </select>
                         </div>
+
                         <MultipleSelectWithBadges
-                            options={tagArray.map((tag) => tag.name)}
+                            options={tags.map((tag) => tag.name)}
                             handleChange={handleMembersChange}
                             label={'Select Members'}
-                            // inputError={!!errors?.users}
-                            // inputTextError={errors.users}
                             renderInput={(params: AutocompleteRenderInputParams) => (
                                 <TextField {...params} />
                             )}
                         />
+
                         <Button type={'submit'}>Add main information</Button>
                     </form>
                 </div>

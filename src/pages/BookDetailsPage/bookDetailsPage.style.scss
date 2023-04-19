@@ -5,15 +5,29 @@
   width: 100%;
   justify-content: center;
   grid-gap: 70px;
+  position: relative;
 
-  &__tags{
+  &__photo_div{
+    max-width: 500px;
+    max-height: 600px;
+  }
+
+  &__arr {
+    max-width: 30px;
+    position: absolute;
+    left: 120px;
+    top: -40px;
+    cursor: pointer;
+  }
+
+  &__tags {
     display: flex;
     justify-content: center;
     grid-gap: 15px;
   }
 
   &__photo {
-    height: 600px;
+    height: 650px;
     width: 500px;
     border-radius: 30px;
   }
@@ -23,7 +37,8 @@
     flex-direction: column;
     grid-gap: 15px;
   }
-  &__owner{
+
+  &__owner {
     display: flex;
     justify-content: center;
     grid-gap: 30px;
@@ -43,7 +58,7 @@
 
   }
 
-  &__city{
+  &__city {
     text-align: center;
   }
 

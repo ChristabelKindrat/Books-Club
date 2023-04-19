@@ -7,7 +7,8 @@ import {useAppSelector} from "../../hooks";
 import { UserInfoLoginInterface} from "../../interfaces";
 import {userService} from "../../services/user.service";
 import {Button, Input} from "../../components";
-
+import {settingValidator} from "./settings.validator";
+import {joiResolver} from "@hookform/resolvers/joi";
 
 const ChangeUserInformation:FC =() =>{
     const {activeUser} = useAppSelector(state => state.user);
@@ -17,11 +18,12 @@ const ChangeUserInformation:FC =() =>{
         handleSubmit,
         // formState: {errors}
     } = useForm<UserInfoLoginInterface>({
-        // resolver: joiResolver(registerValidator),
+        // resolver: joiResolver(settingValidator),
         mode: 'onSubmit',
     });
 
     const submit: SubmitHandler<UserInfoLoginInterface> = async (data) => {
+        data.password || (data.password = null);
         await userService.putInfo(data, activeUser?.id!);
     }
 
@@ -34,7 +36,7 @@ const ChangeUserInformation:FC =() =>{
                 type={'text'}
                 value={activeUser?.first_name}
                 {...register('first_name')}
-                // errorText={errors.firstName?.message}
+                // errorText={errors.first_name?.message}
             />
             </div>
             <div>
@@ -44,7 +46,7 @@ const ChangeUserInformation:FC =() =>{
                 type={'text'}
                 value={activeUser?.last_name}
                 {...register('last_name')}
-                // errorText={errors.firstName?.message}
+                // errorText={errors.last_name?.message}
             />
            </div>
             <div>
@@ -54,7 +56,7 @@ const ChangeUserInformation:FC =() =>{
                 type={'text'}
                 value={activeUser?.phone_number.toString()}
                 {...register('phone_number')}
-                // errorText={errors.phone?.message}
+                // errorText={errors.phone_number?.message}
             />
             </div>
             <div>
@@ -70,11 +72,10 @@ const ChangeUserInformation:FC =() =>{
             <div>
             <span>Password :</span>
             <Input
-                defaultV={activeUser?.password ?? ''}
+                defaultV={activeUser?.password ?? null}
                 type={'password'}
                 value={'Create new Password'}
                 {...register('password')}
-                // errorText={errors.password?.message}
             />
             </div>
             <Button type={'submit'}>Save information</Button>

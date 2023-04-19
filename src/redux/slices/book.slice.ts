@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 import {BookInterface} from "../../interfaces";
-import { getAll, getById, postBook} from "../thunk/books.thunk";
+import {getAll, getAllFilter, getById, postBook} from "../thunk/books.thunk";
 
 interface BookStateInterface{
     books: BookInterface[],
@@ -32,6 +32,9 @@ const BookSlice = createSlice({
             // .addCase(approveBook.fulfilled,(state, action)=>{
             //     state.book_status = true;
             // })
+            .addCase(getAllFilter.fulfilled,(state, action)=>{
+                state.books = action.payload.content
+            })
             .addCase(getById.fulfilled,(state, action)=>{
                 state.bookById = action.payload
             })
@@ -56,6 +59,7 @@ const bookAction ={
     getAll,
     postBook,
     getById,
+    getAllFilter
 };
 
 export {

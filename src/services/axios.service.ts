@@ -1,10 +1,8 @@
 import {createBrowserHistory} from 'history';
-import {baseURL} from "../utils/constansts/urls";
-
 import axios, {AxiosResponse} from "axios";
+
+import {baseURL} from "../utils/constansts/urls";
 import {authService} from "./auth.service";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 export type AxiosRes<T> = Promise<AxiosResponse<T>>
 const history = createBrowserHistory();

@@ -99,4 +99,4 @@ export {
     validateFirstName,
     validateLastName,
     validateStreet
-}
+};

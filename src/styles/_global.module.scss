@@ -21,14 +21,4 @@
   justify-content: center;
   grid-gap: 5px;
   font-size: 0.95rem;
-
-  a {
-    transition: 0.5s opacity, 0.5s color;
-    color: var(--accent-text-color);
-    font-size: 1rem;
-
-    &:hover {
-      color: var(--primary-color);
-    }
-  }
 }

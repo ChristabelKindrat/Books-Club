@@ -14,7 +14,7 @@ interface PhoneNumberInterface{
 
 interface UserLoginInterface{
     email: string,
-    password?: string,
+    password?: string | null,
 }
 
 interface AddressInterface{

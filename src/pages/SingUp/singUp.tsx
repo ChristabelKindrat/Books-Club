@@ -29,9 +29,6 @@ const SingUp: FC = () => {
     const submit: SubmitHandler<UserInterface> = async (data) => {
         await dispatch(authAction.register({user: data}));
         reset();
-        // if (meta.requestStatus === "fulfilled"){
-        //
-        // }
     }
 
     return (

@@ -9,7 +9,7 @@ export interface InputProps {
     errorFromBack?: string;
     fullWidth?: boolean;
     value?: string;
-    defaultV?: string | number;
+    defaultV?: string | number | null;
     defaultText?: string | number,
     onChange?: React.ChangeEventHandler
 }
@@ -20,7 +20,7 @@ const Input: FC<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(
             <>
                 <input type={type}
                        style={fullWidth ? {width: '100%'} : {width: 'auto'}}
-                       defaultValue={defaultV}
+                       defaultValue={defaultV!}
                        placeholder={value}
                        value={defaultText}
                        ref={ref}

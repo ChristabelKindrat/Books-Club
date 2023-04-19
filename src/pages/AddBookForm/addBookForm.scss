@@ -2,14 +2,11 @@
 
 .form-wrapper-book{
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   grid-gap: 15px;
   padding-top: 10px;
 }
 .give_book_wrap{
-  //background-image: url("../.");
-  //z-index: 3;
   display: flex;
   padding: 30px;
   align-items: center;
@@ -33,6 +30,15 @@
   padding: 30px;
   margin-top: 20px;
   margin-bottom: 60px;
+  position: relative;
+
+  &__arr{
+    max-width: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: -150px;
+  }
+
 }
 
 .arrow{

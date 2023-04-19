@@ -3,4 +3,4 @@ export interface ErrorObjFromBack{
     status: number,
     error: string,
     path: string
-}
+};

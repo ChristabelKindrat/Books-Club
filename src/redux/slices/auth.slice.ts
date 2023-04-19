@@ -10,6 +10,7 @@ interface AuthState {
     isAuth: boolean,
     registeredUser: UserInterface | null,
 }
+
 const initialUserState: AuthState = {
     user: null,
     errorFromBack: '',
@@ -36,13 +37,6 @@ const authSlice = createSlice({
             })
             .addCase(register.fulfilled, (state, action)=>{
                 state.registeredUser = action.payload;
-                console.log(state.registeredUser);
-                const [type] = action.type.split('/').slice(-1);
-                if (type === 'rejected'){
-                    // state.errorFromBack = action.payload?.message;
-                }else {
-                    // state.errorFromBack = null;
-                }
             })
             .addCase(register.rejected,(state, {payload}: any)=>{
                 state.errorFromBack = payload.error ?? 'Something went Wrong';

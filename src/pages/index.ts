@@ -5,5 +5,5 @@ export * from './Settings/settings';
 export * from './AddBookForm/addBookForm';
 export * from './BooksPage/booksPage';
 export * from './NotFound/notFoundPage';
-export * from './userBookPage/userBookPage';
+export * from './UserBookPage/userBookPage';
 

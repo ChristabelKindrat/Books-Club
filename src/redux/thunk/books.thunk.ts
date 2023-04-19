@@ -6,11 +6,23 @@ import {bookService} from "../../services/book.service";
 
 export const getAll = createAsyncThunk<BookPaginationInterface, { pageNumber: number }>(
     'BookSlice/getAll',
-    async ({pageNumber},{rejectWithValue}) =>{
+    async ({pageNumber}, {rejectWithValue}) => {
         try {
-            const {data}= await bookService.getAll(pageNumber);
+            const {data} = await bookService.getAll(pageNumber);
             return data;
-        }catch (e){
+        } catch (e) {
+            const error = e as AxiosError
+            return rejectWithValue(error.response?.data);
+        }
+    }
+);
+export const getAllFilter = createAsyncThunk<BookPaginationInterface, { searchValue: string }>(
+    'BookSlice/getAllFilter',
+    async ({searchValue}, {rejectWithValue}) => {
+        try {
+            const {data} = await bookService.getAllFilter(searchValue);
+            return data;
+        } catch (e) {
             const error = e as AxiosError
             return rejectWithValue(error.response?.data);
         }
@@ -19,39 +31,26 @@ export const getAll = createAsyncThunk<BookPaginationInterface, { pageNumber: nu
 
 export const getById = createAsyncThunk<BookInterface, number>(
     'BookSlice/getById',
-    async (id,{rejectWithValue}) =>{
+    async (id, {rejectWithValue}) => {
         try {
-            const {data}=await bookService.getById(id);
+            const {data} = await bookService.getById(id);
             return data;
-        }catch (e){
+        } catch (e) {
             const error = e as AxiosError
             return rejectWithValue(error.response?.data);
         }
     }
 );
 
-export const postBook = createAsyncThunk<BookInterface, {book:BookInterface}>(
+export const postBook = createAsyncThunk<BookInterface, { book: BookInterface }>(
     'BookSlice/postBook',
-    async ({book},{rejectWithValue})=>{
+    async ({book}, {rejectWithValue}) => {
         try {
             const {data} = await bookService.postBook(book);
             return data;
-        }catch (e) {
+        } catch (e) {
             const error = e as AxiosError
             return rejectWithValue(error.response?.data);
         }
     }
 );
-//
-// export const approveBook = createAsyncThunk <BookInterface, {book_id: number,user_id:number}>(
-//     'BookSlice/approveBook',
-//     async ({book_id, user_id}, {rejectWithValue})=> {
-//         try{
-//             const {data} = await bookService.approveBook(user_id,book_id)
-//             return data;
-//         }catch (e) {
-//             const error = e as AxiosError
-//             return rejectWithValue(error.response?.data);
-//         }
-//     }
-// )

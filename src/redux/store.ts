@@ -1,4 +1,7 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {persistReducer,FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import {bookReducer} from "./slices/book.slice";
 import {authReducer} from "./slices/auth.slice";
 import {userReducer} from "./slices/user.slice";
@@ -8,14 +11,28 @@ const rootReducer = combineReducers({
     auth: authReducer,
     user: userReducer,
 });
+const persistConfig = {
+    key: 'root',
+    storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 
 const setupStore = () => configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            }})
 });
 
 type RootState = ReturnType<typeof rootReducer>
 type AppStore = ReturnType<typeof setupStore>
 type AppDispatch = AppStore['dispatch'];
+
 
 export type {
     RootState,
@@ -24,5 +41,5 @@ export type {
 }
 
 export {
-    setupStore
+    setupStore,
 }

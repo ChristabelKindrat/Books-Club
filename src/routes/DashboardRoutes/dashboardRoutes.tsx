@@ -1,10 +1,10 @@
 import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
-import {BookDetailsPage, BooksPage, AddBookForm, NotFoundPage, Settings, UserBookPage} from "../pages";
-import {LogIn, SingUp} from "../pages";
-import {MainLayout} from "../layouts";
-import PrivateRoute from "./privateRoute";
+import {BookDetailsPage, BooksPage, AddBookForm, NotFoundPage, Settings, UserBookPage} from "../../pages";
+import {LogIn, SingUp} from "../../pages";
+import {MainLayout} from "../MainLayouts";
+import PrivateRoute from "../PrivateRoute/privateRoute";
 
 function DashboardRoutes() {
 

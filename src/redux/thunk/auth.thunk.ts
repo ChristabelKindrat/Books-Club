@@ -1,6 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import { UserInterface, UserLoginInterface, UserToken} from "../../interfaces";
 import {AxiosError} from "axios";
+
+import { UserInterface, UserLoginInterface, UserToken} from "../../interfaces";
 import {authService} from "../../services/auth.service";
 
 export const register = createAsyncThunk<UserInterface, {user :UserInterface}>(
